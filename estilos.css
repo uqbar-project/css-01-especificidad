@@ -1,0 +1,20 @@
+
+div {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+#blue {
+  background-color: blue;
+}
+
+.cajita {
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+}
