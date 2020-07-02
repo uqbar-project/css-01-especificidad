@@ -103,7 +103,7 @@ En esta definición
 
 aparecen dos clases, tenemos entonces especificidad `0,0,2,1`, y aquí la clase `yellow` pisa la definición de `div`, por eso vemos el rectángulo en amarillo.
 
-
+![especificidad de clase](./images/thirdExample.png)
 
 
 ## Material adicional
