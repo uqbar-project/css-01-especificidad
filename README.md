@@ -46,8 +46,8 @@ div {
 
 Esto produce una especificidad de `0,0,0,1`:
 
-|inline|identificador|clase|tag|
-|------|------|------|------|------|
+| inline | identificador | clase | tag |
+|------|------|------|------|
 |0|0|0|1|
 | | | | div |
 
@@ -63,8 +63,8 @@ Veamos ahora el siguiente ejemplo:
 
 Aquí tenemos una especificidad `0,0,1,1`:
 
-|inline|identificador|clase|tag|
-|------|------|------|------|------|
+| inline | identificador | clase | tag |
+|------|------|------|------|
 |0|0|1|1|
 | | | .cajita | div |
 
