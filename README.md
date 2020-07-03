@@ -93,7 +93,9 @@ A continuación te mostramos cómo abrir en Firefox el modo Desarrollo con F12, 
 
 Entonces lo veremos de color turquesa. Volvemos para atrás el cambio ya que los siguientes ejemplos necesitan que tengamos nuestro valor por defecto en verde.
 
-### Tercera cajita
+> En general te recomendamos que hagas las pruebas en el navegador Firefox, porque tiene mejores herramientas que Google Chrome.
+
+### Tercera cajita: class
 
 En esta definición
 
@@ -103,7 +105,73 @@ En esta definición
 
 aparecen dos clases, tenemos entonces especificidad `0,0,2,1`, y aquí la clase `yellow` pisa la definición de `div`, por eso vemos el rectángulo en amarillo.
 
-![especificidad de clase](./images/thirdExample.png)
+![especificidad de clase](./images/specificityClass.png)
+
+### Cuarta cajita: id
+
+```html
+<div id="blue" class="cajita yellow">4</div>
+```
+
+La especificidad es `0,1,2,1`, en particular para definir el color podemos ver que
+
+| inline | identificador | clase | tag |
+| ------ | ------ | ----- | ------ |
+|0|1|2|1|
+| | id="blue" -> azul | .yellow -> "amarillo" | div -> "verde" |
+
+![especificidad con id blue](./images/specificityId.png)
+
+> **Nota**: dado que un html válido solo debe contener un único `id`, no recomendamos generar estilos que dependan de un identificador a menos que explícitamente debamos definir un estilo particular en un lugar muy específico.
+
+### Quinta cajita: inline style
+
+```html
+<div style="background-color: red;" id="blue" class="cajita yellow">5</div>
+```
+
+Aquí tenemos una especificidad `1,1,2,1` que para el color aplican estas definiciones
+
+| inline | identificador | clase | tag |
+| ------ | ------ | ----- | ------ |
+|1|1|2|1|
+| inline -> rojo | id="blue" -> azul | .yellow -> "amarillo" | div -> "verde" |
+
+Podemos ver cómo se van pisando los estilos en el navegador:
+
+![especificidad inline](./images/specificityInline.png)
+
+De la misma manera que desaconsejamos el uso de `id` para generar estilos, el estilo inline [tiene muchas desventajas](https://stackoverflow.com/questions/2612483/whats-so-bad-about-in-line-css):
+
+- los cambios se van propagando por medio de copy/paste, por lo que cada modificación requiere editar manualmente uno por uno cada estilo
+- al no centralizar el look & feel, es muy difícil generar un "dark mode" (modo claro/oscuro)
+- los navegadores descargan los archivos de estilos una vez y lo guardan en una cache, por lo que si la siguiente página html usa la misma hoja de estilos el archivo ya estará descargado (mejora en performance)
+
+### VIP: Very !important anti-Pattern
+
+Otra "herejía" consiste en utilizar la declaración `!important` que echa por tierra las prioridades establecidas por la especificidad. Hagamos ahora este cambio en nuestro css:
+
+```css
+.yellow {
+  background-color: yellow !important;
+}
+```
+
+¿Qué sucede con las cajitas?
+
+![especificidad con important](./images/specificityImportant.png)
+
+Las últimas tres se colorean con amarillo, porque el important deja como prioritaria la definición de la clase "yellow". Esto puede iniciar una guerra de importants, donde alguien decide colocar el `!important` para el id blue:
+
+```css
+#blue {
+  background-color: blue !important;
+}
+```
+
+y ahora tenemos las últimas dos cajas pintadas de azul, porque cuando se cruzan dos `!important` prevalece el criterio de especificidad, y recordemos que `id` > `class`.
+
+Recordemos no obstante que **se considera una mala práctica** romper el criterio de especificidad a partir de definiciones arbitrarias de `!important` que ensucian nuestros códigos de estilos.
 
 
 ## Material adicional
