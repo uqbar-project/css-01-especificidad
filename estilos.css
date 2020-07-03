@@ -18,3 +18,7 @@ div {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
 }
+
+.cajita.yellow {
+  background-color: blueviolet;
+}
