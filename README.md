@@ -241,3 +241,7 @@ Ahora veremos en violeta la tercera cajita, ya que ambas clases `cajita` y `yell
 - [CSS Specificity: Things you should know](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
 - [Specifics on CSS Specificity](https://css-tricks.com/specifics-on-css-specificity/)
 - [A Specificity Battle](https://css-tricks.com/a-specificity-battle/)
+- [CSS Specificity - When several rules collide](https://marksheet.io/css-priority.html)
+- [Specificity Calculator](https://specificity.keegan.st/)
+
+
