@@ -4,29 +4,20 @@ https://codepen.io/fdodino/pen/LYGOaJV
 
 ## Cascada de estilos
 
-Los archivos css permiten definir reglas [en cascada](https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Cascada_y_herencia) que se aplican y combinan sobre los elementos de un documento HTML. Ahora bien, para entender de qué manera una regla puede pisar la definición de otra, tenemos el concepto **especificidad** y entenderlo nos facilitará evitar redundancias o llegar a soluciones poco elegantes (sí, estamos hablando del `!important`).
+Los archivos css permiten definir reglas [en cascada](https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Cascada_y_herencia) que se aplican y combinan sobre los elementos de un documento HTML. Ahora bien, para entender de qué manera una regla puede pisar la definición de otra, tenemos que conocer el concepto **especificidad**.
 
 ## Especificidad
 
 La [especificidad](https://developer.mozilla.org/es/docs/Web/CSS/Especificidad) en CSS indica de qué manera cada elemento adopta el estilo que le corresponde según las siguientes prioridades, partiendo de la más baja hasta la más alta:
 
-- selectores por tag: `h1`, `div`, `p`, etc.
+- selectores por elemento o _tag HTML_: `h1`, `div`, `p`, etc.
 - selectores por clase/atributo, lo que en html se define con el atributo `class`
 - selectores por identificador (atención que en una página HTML bien formada solo puede haber un identificador por elemento)
 - estilos inline
 
 ![specificity calculation base](./images/specificity-calculationbase.png)
 
-> Desaconsejamos fuertemente el uso `important!` como técnica para forzar el cambio de prioridades en la definición de estilos.
-
-En el artículo original de [Andy Clarke](https://stuffandnonsense.co.uk/archives/css_specificity_wars.html1), propone una graciosa metáfora para asociar las prioridades:
-
-1. A storm trooper (element selector) is less powerful than Darth Maul (class selector*)
-2. Darth Maul is less powerful than Darth Vader (ID selector)
-3. Darth Vader is less powerful than the than the Emperor (style attribute)
-4. The Death Star blows up everything
-
-Incluso propone un [cheatsheet](https://stuffandnonsense.co.uk/archives/images/css-specificity-wars.png) para recordar las especificidades.
+Pueden ver el artículo de [Andy Clarke](https://stuffandnonsense.co.uk/archives/css_specificity_wars.html1), que propone una metáfora basada en Star Wars para explicar las prioridades de cada especificidad.
 
 ## Nuestro ejemplo
 
@@ -38,7 +29,7 @@ En el primer caso tenemos:
 <div>1</div>
 ```
 
-Lo que produce que se vea verde porque nuestro archivo de estilos define:
+Nuestro archivo de estilos es
 
 ```css
 div {
@@ -48,7 +39,7 @@ div {
 }
 ```
 
-Esto produce una especificidad de `0,0,0,1`:
+La especificidad de esta definición es `0,0,0,1`:
 
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
