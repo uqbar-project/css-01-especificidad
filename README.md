@@ -110,24 +110,6 @@ por eso vemos el rectángulo en amarillo.
 
 ![especificidad de clase](./images/specificityClass.png)
 
-### Cláusula !important
-
-Podemos modificar la prioridad por defecto, mediante la cláusula `!important`. Por ejemplo, podemos establecer que la definición verde que hace el selector `div` es más importante que la definición de la clase `yellow`:
-
-```css
-div {
-  ...
-  background-color: green !important;
-```
-
-Esto hará que todas las cajitas se visualicen en verde. El problema de esta técnica es que altera el orden natural, y esto lo hace en cascada, por lo que es muy probable que quien cree yellow decida agregar también `!important` a su definición para que no se pise con definiciones más genéricas que también tengan el important. Esto nos recuerda este capítulo de la pantera rosa:
-
-![css important](./images/cssImportant.gif)
-
-> Desaconsejamos fuertemente el uso de la cláusula `!important` como técnica para forzar el cambio de prioridades en la definición de estilos.
-
-Tenemos otras alternativas para ganar especificidad sin recurrir a esta técnica, como las que siguen a continuación.
-
 ### Cuarta cajita: id
 
 ```html
@@ -190,9 +172,11 @@ Las últimas tres se colorean con amarillo, porque el important deja como priori
 }
 ```
 
-y ahora tenemos las últimas dos cajas pintadas de azul, porque cuando se cruzan dos `!important` prevalece el criterio de especificidad, y recordemos que `id` > `class`.
+y ahora tenemos las últimas dos cajas pintadas de azul, porque cuando se cruzan dos `!important` prevalece el criterio de especificidad, y recordemos que `id` > `class`. En definitiva, cuando agregamos un `!important` rompemos el orden natural de especificidad y esto es muy probable que nos lleve a agregar nuevos `!important`, algo como
 
-Recordemos no obstante que **se considera una mala práctica** romper el criterio de especificidad a partir de definiciones arbitrarias de `!important` que ensucian nuestros códigos de estilos.
+![css important](./images/cssImportant.gif)
+
+> Por este motivo desaconsejamos fuertemente el uso de la cláusula `!important` como técnica para forzar el cambio de prioridades en la definición de estilos.
 
 ### BONUS 1: Combinación de especificidades
 
