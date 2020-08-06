@@ -234,7 +234,7 @@ Ahora veremos en violeta la tercera cajita, ya que ambas clases `cajita` y `yell
 
 ### Herencia de estilos
 
-Para algunas propiedades es posible definir reglas que se heredan de un elemento padre a otro hijo: colores, font, son alguno de ellos. Si agregamos estas propiedades para el selector `div`:
+Para algunas propiedades es posible definir reglas que se heredan de un elemento padre a otro hijo: colores, font, entre otras. Si agregamos estas propiedades para el selector `div`:
 
 ```css
 div {
