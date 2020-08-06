@@ -2,6 +2,10 @@
 
 https://codepen.io/fdodino/pen/LYGOaJV
 
+## Cascada de estilos
+
+Los archivos css permiten definir reglas [en cascada](https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Cascada_y_herencia) que se aplican y combinan sobre los elementos de un documento HTML. Ahora bien, para entender de qué manera una regla puede pisar la definición de otra, tenemos el concepto **especificidad** y entenderlo nos facilitará evitar redundancias o llegar a soluciones poco elegantes (sí, estamos hablando del `!important`).
+
 ## Especificidad
 
 La [especificidad](https://developer.mozilla.org/es/docs/Web/CSS/Especificidad) en CSS indica de qué manera cada elemento adopta el estilo que le corresponde según las siguientes prioridades, partiendo de la más baja hasta la más alta:
@@ -235,6 +239,28 @@ Ahora veremos en violeta la tercera cajita, ya que ambas clases `cajita` y `yell
 |0|0|2|1|
 | | | .cajita .yellow -> "violeta" > .yellow -> "amarillo" | div -> "verde" |
 
+### Herencia de estilos
+
+Para algunas propiedades es posible definir reglas que se heredan de un elemento padre a otro hijo: colores, font, son alguno de ellos. Si agregamos estas propiedades para el selector `div`:
+
+```css
+div {
+  font-family: Ubuntu;
+  font-size: 20px;
+  color: white;
+```
+
+Esto se hereda a los elementos hijos del div en el html, incluso si modificamos nuestra primera cajita a:
+
+```html
+  <div>
+    <span>1</span>
+  </div>
+```
+
+Veremos que todas las cajas ahora se visualizan con un font Ubuntu color blanco de tamaño 20 píxeles:
+
+![herencia de propiedades](./images/herencia.png)
 
 ## Material adicional
 
@@ -243,5 +269,5 @@ Ahora veremos en violeta la tercera cajita, ya que ambas clases `cajita` y `yell
 - [A Specificity Battle](https://css-tricks.com/a-specificity-battle/)
 - [CSS Specificity - When several rules collide](https://marksheet.io/css-priority.html)
 - [Specificity Calculator](https://specificity.keegan.st/)
-
+- [Grafo de especificidad](https://jonassebastianohlsson.com/specificity-graph/), podés copiar y pegar tu archivo css y te muestra gráficamente la definición de especificidades
 
