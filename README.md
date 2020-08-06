@@ -147,7 +147,7 @@ Podemos ver cómo se van pisando los estilos en el navegador:
 De la misma manera que desaconsejamos el uso de `id` para generar estilos, el estilo inline [tiene muchas desventajas](https://stackoverflow.com/questions/2612483/whats-so-bad-about-in-line-css):
 
 - los cambios se van propagando por medio de copy/paste, por lo que cada modificación requiere editar manualmente uno por uno cada estilo
-- al no centralizar el look & feel, es muy difícil generar un "dark mode" (modo claro/oscuro)
+- al no centralizar el look & feel, es muy difícil generar requerimientos nuevos como un "dark mode" (modo claro/oscuro)
 - los navegadores descargan los archivos de estilos una vez y lo guardan en una cache, por lo que si la siguiente página html usa la misma hoja de estilos el archivo ya estará descargado (mejora en performance)
 
 ### VIP: Very !important anti-Pattern
@@ -172,7 +172,7 @@ Las últimas tres se colorean con amarillo, porque el important deja como priori
 }
 ```
 
-y ahora tenemos las últimas dos cajas pintadas de azul, porque cuando se cruzan dos `!important` prevalece el criterio de especificidad, y recordemos que `id` > `class`. En definitiva, cuando agregamos un `!important` rompemos el orden natural de especificidad y esto es muy probable que nos lleve a agregar nuevos `!important`, algo como
+y ahora tenemos las últimas dos cajas pintadas de azul, porque cuando se cruzan dos `!important` prevalece el criterio de especificidad, y recordemos que `id` > `class`. En definitiva, cuando agregamos un `!important` rompemos el orden natural de las cosas y esto es muy probable que nos fuerce a agregarlo en más de un lugar, lo que nos recuerda a
 
 ![css important](./images/cssImportant.gif)
 
