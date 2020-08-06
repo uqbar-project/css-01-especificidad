@@ -86,7 +86,7 @@ A continuación te mostramos cómo abrir en Firefox el modo Desarrollo con F12, 
 
 ![Especificidad en Firefox](./images/firefox.gif)
 
-Entonces lo veremos de color turquesa. Volvemos para atrás el cambio ya que los siguientes ejemplos necesitan que tengamos nuestro valor por defecto en verde.
+Volvemos para atrás el cambio ya que los siguientes ejemplos necesitan que tengamos nuestro valor por defecto en verde.
 
 > En general te recomendamos que hagas las pruebas en el navegador Firefox, porque tiene mejores herramientas que Google Chrome.
 
@@ -109,6 +109,24 @@ aparecen dos clases, tenemos entonces especificidad general `0,0,2,1`, y aquí l
 por eso vemos el rectángulo en amarillo.
 
 ![especificidad de clase](./images/specificityClass.png)
+
+### Cláusula !important
+
+Podemos modificar la prioridad por defecto, mediante la cláusula `!important`. Por ejemplo, podemos establecer que la definición verde que hace el selector `div` es más importante que la definición de la clase `yellow`:
+
+```css
+div {
+  ...
+  background-color: green !important;
+```
+
+Esto hará que todas las cajitas se visualicen en verde. El problema de esta técnica es que altera el orden natural, y esto lo hace en cascada, por lo que es muy probable que quien cree yellow decida agregar también `!important` a su definición para que no se pise con definiciones más genéricas que también tengan el important. Esto nos recuerda este capítulo de la pantera rosa:
+
+![css important](./images/cssImportant.gif)
+
+> Desaconsejamos fuertemente el uso de la cláusula `!important` como técnica para forzar el cambio de prioridades en la definición de estilos.
+
+Tenemos otras alternativas para ganar especificidad sin recurrir a esta técnica, como las que siguen a continuación.
 
 ### Cuarta cajita: id
 
