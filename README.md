@@ -257,6 +257,7 @@ Veremos que todas las cajas ahora se visualizan con un font Ubuntu color blanco 
 
 ## Material adicional
 
+- [Jueguito para practicar especificidad](https://flukeout.github.io/)
 - [CSS Specificity: Things you should know](https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/)
 - [Specifics on CSS Specificity](https://css-tricks.com/specifics-on-css-specificity/)
 - [A Specificity Battle](https://css-tricks.com/a-specificity-battle/)
