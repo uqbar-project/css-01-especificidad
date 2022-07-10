@@ -1,6 +1,6 @@
-## Ejemplo vivo
+## Video explicativo
 
-https://codepen.io/fdodino/pen/LYGOaJV
+Tenés la explicación de este ejemplo [en este link](https://youtu.be/IV7n-lJeGGI).
 
 ## Cascada de estilos
 
@@ -35,7 +35,7 @@ Nuestro archivo de estilos es
 div {
   width: 100px;
   height: 100px;
-  background-color: green;
+  background-color: blue;
 }
 ```
 
@@ -46,7 +46,7 @@ La especificidad de esta definición es `0,0,0,1`:
 |0|0|0|1|
 | | | | div |
 
-Por eso vemos un rectángulo de color verde.
+Por eso vemos un rectángulo de color azul.
 
 ### Div cajita
 
@@ -56,7 +56,7 @@ Veamos ahora el siguiente ejemplo:
 <div class="cajita">2</div>
 ```
 
-Aquí tenemos una especificidad `0,0,1,1`:
+Aquí tenemos especificidades `0,0,1,1` (`0,0,1,0` de `.cajita` + `0,0,0,1` de `div`):
 
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
@@ -78,42 +78,39 @@ Esto produce únicamente una caja verde con borde redondeado, pero si le agregam
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
-  background-color: paleturquoise;
+  background-color: red;
 }
 ```
 
-A continuación te mostramos cómo abrir en Firefox el modo Desarrollo con F12, y luego presionando el botón sobre la cajita podés ver qué propiedades tenés activadas y cuáles se inactivan porque tienen menos prioridad (incluso podés modificar esa prioridad para ver los cambios en el navegador):
+A continuación te mostramos cómo abrir un navegador el modo Desarrollo con F12, y luego presionando el botón sobre la cajita podés ver qué propiedades tenés activadas y cuáles se inactivan porque tienen menos prioridad (incluso podés modificar esa prioridad para ver los cambios en el navegador):
 
-![Especificidad en Firefox](./images/firefox.gif)
-
-Volvemos para atrás el cambio ya que los siguientes ejemplos necesitan que tengamos nuestro valor por defecto en verde.
-
-> En general te recomendamos que hagas las pruebas en el navegador Firefox, porque tiene mejores herramientas que Google Chrome.
+![Especificidad en Firefox](./images/herramientasDesarrollo.gif)
 
 ### Tercera cajita: class
 
 En esta definición
 
 ```html
-<div class="cajita yellow">3</div>
+<div class="cajita violet">
+  <span>3</span>
+</div>
 ```
 
-aparecen dos clases, tenemos entonces especificidad general `0,0,2,1`, y aquí la clase `yellow` pisa la definición de `div`
+aparecen dos clases, tenemos entonces especificidad general `0,0,2,1`, y aquí la clase `violet` pisa la definición de `div`: la prioridad la determina el orden en el que se define dentro del archivo de estilos css. Como `violet` está definido después que `cajita`, eso determina la prioridad.
 
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
 |0|0|1|1|
-| | | .yellow -> "amarillo" | div -> "verde" |
+| | | .violet -> "violeta", .cajita -> "rojo" | div -> "azul" |
 
-
-por eso vemos el rectángulo en amarillo.
-
-![especificidad de clase](./images/specificityClass.png)
+por eso vemos el rectángulo en violeta.
 
 ### Cuarta cajita: id
 
 ```html
-<div id="blue" class="cajita yellow">4</div>
+<div id="yellow" class="cajita violet">
+  <span>4</span>
+</div>
 ```
 
 La especificidad general es `0,1,2,1`, en particular para definir el color de fondo podemos ver que
@@ -121,16 +118,18 @@ La especificidad general es `0,1,2,1`, en particular para definir el color de fo
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
 |0|1|1|1|
-| | id="blue" -> azul | .yellow -> "amarillo" | div -> "verde" |
+| | id="yellow" -> amarillo | .violet -> "violeta", .cajita -> "rojo" | div -> "verde" |
 
-![especificidad con id blue](./images/specificityId.png)
+![especificidad con id yellow](./images/especificidadPorId.png)
 
 > **Nota**: dado que un html válido solo debe contener un único `id`, no recomendamos generar estilos que dependan de un identificador a menos que explícitamente debamos definir un estilo particular en un lugar muy específico.
 
 ### Quinta cajita: inline style
 
 ```html
-<div style="background-color: red;" id="blue" class="cajita yellow">5</div>
+<div style="background-color: green; color: white;" id="yellow" class="cajita violet">
+  <span>5</span>
+</div>
 ```
 
 Aquí tenemos una especificidad general `1,1,2,1`, para el color de fondo aplican estas definiciones
@@ -138,11 +137,11 @@ Aquí tenemos una especificidad general `1,1,2,1`, para el color de fondo aplica
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
 |1|1|1|1|
-| inline -> rojo | id="blue" -> azul | .yellow -> "amarillo" | div -> "verde" |
+| inline -> verde | id="yellow" -> amarillo | .violet -> "violeta", .cajita -> "rojo" | div -> "verde" |
 
 Podemos ver cómo se van pisando los estilos en el navegador:
 
-![especificidad inline](./images/specificityInline.png)
+![especificidad inline](./images/especificidadInline.png)
 
 De la misma manera que desaconsejamos el uso de `id` para generar estilos, el estilo inline [tiene muchas desventajas](https://stackoverflow.com/questions/2612483/whats-so-bad-about-in-line-css):
 
@@ -155,24 +154,24 @@ De la misma manera que desaconsejamos el uso de `id` para generar estilos, el es
 Otra "herejía" consiste en utilizar la declaración `!important` que echa por tierra las prioridades establecidas por la especificidad. Hagamos ahora este cambio en nuestro css:
 
 ```css
-.yellow {
-  background-color: yellow !important;
+.cajita {
+  background-color: red !important;
 }
 ```
 
 ¿Qué sucede con las cajitas?
 
-![especificidad con important](./images/specificityImportant.png)
+![especificidad con important](./images/especificidadImportant.png)
 
-Las últimas tres se colorean con amarillo, porque el important deja como prioritaria la definición de la clase "yellow". Esto puede iniciar una guerra de importants, donde alguien decide colocar el `!important` para el id blue:
+Cuatro de las cajas se colorean con rojo, porque el important deja como prioritaria la definición de la clase "cajita". Esto puede iniciar una guerra de importants, donde alguien decide colocar el `!important` para el id blue:
 
 ```css
-#blue {
-  background-color: blue !important;
+#yellow {
+  background-color: yellow !important;
 }
 ```
 
-y ahora tenemos las últimas dos cajas pintadas de azul, porque cuando se cruzan dos `!important` prevalece el criterio de especificidad, y recordemos que `id` > `class`. En definitiva, cuando agregamos un `!important` rompemos el orden natural de las cosas y esto es muy probable que nos fuerce a agregarlo en más de un lugar, lo que nos recuerda a
+y ahora tenemos las últimas dos cajas pintadas de amarillo, porque cuando se cruzan dos `!important` prevalece el criterio de especificidad, y recordemos que `id` > `class`. En definitiva, cuando agregamos un `!important` rompemos el orden natural de las cosas y esto es muy probable que nos fuerce a agregarlo en más de un lugar, lo que nos recuerda a
 
 ![css important](./images/cssImportant.gif)
 
@@ -183,54 +182,40 @@ y ahora tenemos las últimas dos cajas pintadas de azul, porque cuando se cruzan
 Un caso adicional puede ser que el css combine un tag + una clase, por ejemplo:
 
 ```css
-/* definición previa */
-.yellow {
-  background-color: yellow;
-}
-
-div.yellow {
+div.violet {
   background-color: peru;
 }
+
+/* definición previa */
+.violet {
+  background-color: darkviolet;
+}
 ```
 
-Modifiquemos la cajita tres de la siguiente manera:
-
-```html
-<div class="cajita yellow">
-  <section class="yellow">3</section>
-  3'
-</div>
-```
-
-Ahora veremos que
-
-- el div que tiene yellow aparece con un color naranja por la definición específica `div.yellow`
-- mientras que el section con class yellow toma el color amarillo de la definición `.yellow` en css
-
-![especificidad combinada](./images/specificityCombined.png)
+Ahora veremos que el div que tiene violet aparece con un color marrón por la definición `div.violet` (0, 0, 1, 1) que tiene **mayor especificidad** que `violet` (0, 0, 1, 0)
 
 ### BONUS 2: Múltiples clases
 
 También podemos definir en nuestro css precedencia si varias clases se combinan en un elemento:
 
 ```css
-.cajita.yellow {
-  background-color: blueviolet;
+.cajita.violet {
+  background-color: darkturquoise;
 }
 ```
 
 volviendo nuestra tercera cajita a:
 
 ```html
-<div class="cajita yellow">3</div>
+<div class="cajita violet">3</div>
 ```
 
-Ahora veremos en violeta la tercera cajita, ya que ambas clases `cajita` y `yellow` tienen prioridad sobre la `yellow`:
+Ahora veremos en violeta la tercera cajita, ya que ambas clases `cajita` y `violet` tienen prioridad sobre la `violet`:
 
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
 |0|0|2|1|
-| | | .cajita .yellow -> "violeta" > .yellow -> "amarillo" | div -> "verde" |
+| | | .cajita + .violet -> "turquesa" > .violet y .cajita por separado | div -> "verde" |
 
 ### Herencia de estilos
 
@@ -238,12 +223,14 @@ Para algunas propiedades es posible definir reglas que se heredan de un elemento
 
 ```css
 div {
+  /* Fuente */
   font-family: Ubuntu;
   font-size: 20px;
-  color: white;
+  ...
+}
 ```
 
-Esto se hereda a los elementos hijos del div en el html, incluso si modificamos nuestra primera cajita a:
+Esto se hereda a los elementos hijos del div en el html, en nuestro caso el span:
 
 ```html
   <div>
@@ -251,9 +238,9 @@ Esto se hereda a los elementos hijos del div en el html, incluso si modificamos 
   </div>
 ```
 
-Veremos que todas las cajas ahora se visualizan con un font Ubuntu color blanco de tamaño 20 píxeles:
+Veremos que todas las cajas ahora se visualizan con un font Ubuntu color blanco de tamaño 20 píxeles.
 
-![herencia de propiedades](./images/herencia.png)
+![herencia de propiedades](./images/herenciaPropiedades.png)
 
 ## Material adicional
 

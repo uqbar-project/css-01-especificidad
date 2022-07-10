@@ -1,27 +1,39 @@
-
 div {
+  /* Fuente */
   font-family: Ubuntu;
   font-size: 20px;
-  color: white;
+
+  /* Tamaño */
   width: 100px;
   height: 100px;
-  background-color: green;
-}
 
-.yellow {
-  background-color: yellow;
-}
-
-#blue {
+  /* Colores */
   background-color: blue;
+  color: white;
+  
+  /* Alineación */
+  text-align: center;
+
+  border-radius: 20px;
 }
 
 .cajita {
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
+  background-color: red;
 }
 
-.cajita.yellow {
-  background-color: blueviolet;
+/* div.violet {
+  background-color: peru;
+} */
+
+/* .cajita.violet {
+  background-color: darkturquoise;
+} */
+
+.violet {
+  background-color: darkviolet;
+}
+
+#yellow {
+  background-color: yellow;
+  color: black;
 }
