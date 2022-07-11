@@ -120,7 +120,7 @@ La especificidad general es `0,1,2,1`, en particular para definir el color de fo
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
 |0|1|1|1|
-| | id="yellow" -> amarillo | .violet -> "violeta", .cajita -> "rojo" | div -> "verde" |
+| | id="yellow" -> amarillo | .violet -> "violeta", .cajita -> "rojo" | div -> "azul" |
 
 ![especificidad con id yellow](./images/especificidadPorId.png)
 
@@ -139,7 +139,7 @@ Aquí tenemos una especificidad general `1,1,2,1`, para el color de fondo aplica
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
 |1|1|1|1|
-| inline -> verde | id="yellow" -> amarillo | .violet -> "violeta", .cajita -> "rojo" | div -> "verde" |
+| inline -> verde | id="yellow" -> amarillo | .violet -> "violeta", .cajita -> "rojo" | div -> "azul" |
 
 Podemos ver cómo se van pisando los estilos en el navegador:
 
@@ -217,7 +217,7 @@ Ahora veremos en violeta la tercera cajita, ya que ambas clases `cajita` y `viol
 | inline | identificador | clase | tag |
 | ------ | ------ | ----- | ------ |
 |0|0|2|1|
-| | | .cajita + .violet -> "turquesa" > .violet y .cajita por separado | div -> "verde" |
+| | | .cajita + .violet -> "turquesa" > .violet y .cajita por separado | div -> "azul" |
 
 ### Herencia de estilos
 
