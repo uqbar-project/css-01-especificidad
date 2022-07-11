@@ -33,9 +33,22 @@ Nuestro archivo de estilos es
 
 ```css
 div {
+  /* Fuente */
+  font-family: Ubuntu;
+  font-size: 20px;
+
+  /* Tamaño */
   width: 100px;
   height: 100px;
+
+  /* Colores */
   background-color: blue;
+  color: white;
+  
+  /* Alineación */
+  text-align: center;
+
+  border-radius: 20px;
 }
 ```
 
@@ -63,21 +76,10 @@ Aquí tenemos especificidades `0,0,1,1` (`0,0,1,0` de `.cajita` + `0,0,0,1` de `
 |0|0|1|1|
 | | | .cajita | div |
 
-```css
-.cajita {
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-}
-```
-
-Esto produce únicamente una caja verde con borde redondeado, pero si le agregamos un color de fondo diferente, va a pisar la definición del estilo para el elemento `div`:
+Le agregamos un color de fondo diferente para pisar la definición del estilo para el elemento `div`:
 
 ```css
 .cajita {
-  border-radius: 15px;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
   background-color: red;
 }
 ```
