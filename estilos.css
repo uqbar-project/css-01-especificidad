@@ -1,6 +1,6 @@
 div {
   /* Fuente */
-  font-family: Ubuntu;
+  font-family: Ubuntu, Arial;
   font-size: 20px;
 
   /* Tamaño */
@@ -10,30 +10,9 @@ div {
   /* Colores */
   background-color: blue;
   color: white;
-  
+
   /* Alineación */
   text-align: center;
 
   border-radius: 20px;
-}
-
-.cajita {
-  background-color: red;
-}
-
-/* div.violet {
-  background-color: peru;
-} */
-
-/* .cajita.violet {
-  background-color: darkturquoise;
-} */
-
-.violet {
-  background-color: darkviolet;
-}
-
-#yellow {
-  background-color: yellow;
-  color: black;
 }
