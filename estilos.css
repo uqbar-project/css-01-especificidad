@@ -1,6 +1,6 @@
 div {
   /* Fuente */
-  font-family: Ubuntu;
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;
   font-size: 20px;
 
   /* Tamaño */
@@ -10,7 +10,7 @@ div {
   /* Colores */
   background-color: blue;
   color: white;
-  
+
   /* Alineación */
   text-align: center;
 
