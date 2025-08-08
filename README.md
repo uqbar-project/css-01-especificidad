@@ -17,7 +17,7 @@ La [especificidad](https://developer.mozilla.org/es/docs/Web/CSS/Especificidad) 
 
 ![specificity calculation base](./images/specificity-calculationbase.png)
 
-Pueden ver el artículo de [Andy Clarke](https://stuffandnonsense.co.uk/archives/css_specificity_wars.html1), que propone una metáfora basada en Star Wars para explicar las prioridades de cada especificidad.
+Pueden ver el artículo de [Andy Clarke](https://stuffandnonsense.co.uk/archives/css_specificity_wars.html), que propone una metáfora basada en Star Wars para explicar las prioridades de cada especificidad.
 
 ## Nuestro ejemplo
 
