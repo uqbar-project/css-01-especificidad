@@ -1,7 +1,7 @@
 div {
   /* Fuente */
   font-family: Ubuntu, Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 24px;
 
   /* Tamaño */
   width: 100px;
@@ -18,22 +18,27 @@ div {
 }
 
 .cajita {
-  background-color: red;
+  background-color: red !important;
 }
 
-/* div.violet {
-  background-color: peru;
-} */
-
-/* .cajita.violet {
-  background-color: darkturquoise;
-} */
-
 .violet {
-  background-color: darkviolet;
+  background-color: violet !important;
 }
 
 #yellow {
-  background-color: yellow;
+  background-color: yellow !important;
+  color: black;
+}
+
+body div {
+  background-color: peru;
+}
+
+div.cajita {
+  background-color: darkturquoise;
+}
+
+div.cajita > p.zarlompa > span {
+  background-color: azure;
   color: black;
 }
